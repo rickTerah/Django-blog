@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{object.title}}</h1>
+    <p>{{object.content}}</p>
+    {% if request.user.is_authenticated %}
+        {% if request.user.is_staff %}
+            <a href="{{object.get_edit_url}}" class="btn btn-primary">edit</a>
+            <a href="{{object.get_delete_url}}" class="btn btn-danger">delete</a>
+        {% endif %}
+    {% endif %}
+{% endblock %}
+
+{% block comment %}
+    <h4>Leave a Comment:</h4>
+    <form role="form">
+    <div class="form-group">
+        <textarea class="form-control" rows="3" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+    <br><br>
+{% endblock %}

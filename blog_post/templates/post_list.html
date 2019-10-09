@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% for instance in object_list %}
+        <h4><small>RECENT POSTS</small></h4>
+        <hr>
+        <h2>{{instance.title}}</h2>
+        <h5><span class="glyphicon glyphicon-time"></span> Post by {{instance.user}}, {{instance.publish_date}}</h5>
+        <h5><span class="label label-danger">Food</span> <span class="label label-primary">Ipsum</span></h5><br>
+        <p>{{instance.content|truncatewords:60}}</p>
+        <br><br>
+        <p><a href="{{instance.get_absolute_url}}" class="btn btn-primary mb-2" >View</a></p>
+    {% endfor %}
+    {% if request.user.is_authenticated %}
+    {% if request.user.is_staff %}
+        <p><a href="../new/" class="btn btn-warning">Create New Blog</a></p>
+    {% endif %}
+{% endif %}
+{% endblock %}

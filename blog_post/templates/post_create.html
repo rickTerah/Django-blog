@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="alert alert-success" role="alert">
+    <p>{{alert}}</p>
+</div>
+<form action="." method="post" role="form" class="form-horizontal">{% csrf_token %}
+    <div class="form-group">
+        {{form.as_p}}
+        <button class="btn btn-success" type="submit">save</button><span class="date-icon"></span>
+    </div>
+</form>
+{% endblock %}
+
